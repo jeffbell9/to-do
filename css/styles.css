@@ -1,0 +1,61 @@
+/* Main */
+
+body {
+	background-color: yellow;
+}
+
+#container {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#title {
+	margin-top: 75px;
+	margin-bottom: 50px;
+	text-decoration: underline;
+}
+
+/* Enter item */
+
+#enter {
+	text-align: center;
+	/*margin-left: 430px;*/
+	/*margin-right: 325px;*/
+	border-bottom: solid black 2px;
+	padding-bottom: 30px;
+	padding-left: 10%
+}
+
+#toDoItem {
+	height: 20px;
+	width: 150px;
+	margin-right: 10px;
+}
+
+/* List */
+
+#list {
+	text-align: left;
+	margin-top: 50px;
+	margin-right: 25%;
+	margin-left: 45%;
+	height: 200px;
+
+}
+
+#remove {
+	text-align: center;
+	margin-top: 100px;
+}
+
+input[type=checkbox]:checked + label {
+	text-decoration: line-through;
+}
+
+.toDoItem {
+	margin-bottom: 25px;
+}
+
+.underline {
+	text-decoration: underline;
+}
