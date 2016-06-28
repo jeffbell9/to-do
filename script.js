@@ -2,15 +2,15 @@ $(document).ready(function() {
 
 	// populate list at startup
 
-	var htmlList = "";
+	var htmlList = "<ul>";
 
 	if (JSON.parse(localStorage.getItem("list")) === null) {
-		var loadList = ["<input type='checkbox' id='cb' class='toDoItem' checked><label for='cb'>be awesome!</label><br>",
-					"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>",
-					"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>",
-					"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>",
-					"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>",
-					"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>"
+		var loadList = ["<li class='item'><input type='checkbox' checked><label>be awesome!</label></li>",
+					"<li class='item'><input type='checkbox'><label>__________</label></li>",
+					"<li><input type='checkbox'><label>__________</label></li>",
+					"<li><input type='checkbox'><label>__________</label></li>",
+					"<li><input type='checkbox'><label>__________</label></li>",
+					"<li><input type='checkbox'><label>__________</label></li></ul>"
 					];
 		localStorage.setItem("list", JSON.stringify(loadList));
 	} else {
@@ -21,6 +21,8 @@ $(document).ready(function() {
 	for (var item in loadList) {
 		htmlList += loadList[item];
 	}
+
+	htmlList += "</ul>";
 
 	$("#list").html(htmlList);
 
@@ -36,8 +38,8 @@ $(document).ready(function() {
 				$("#toDoItem").val("");
 				
 				if ($(this).text() !== '_______') {
-					var index = loadList.indexOf("<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>");
-					loadList[index] = "<input type='checkbox' id='cb' class='toDoItem'><label for='cb' class='underline'>" + item + "</label><br>";
+					var index = loadList.indexOf("<li><input type='checkbox'><label>__________</label></li>");
+					loadList[index] = "<li><input type='checkbox'><label for='cb' class='underline'>" + item + "</label></li>";
 					localStorage.setItem("list", JSON.stringify(loadList));
 
 					for (var item in loadList) {
@@ -58,18 +60,22 @@ $(document).ready(function() {
 	// remove items from list
 
 	$("#remove").click(function() {
-		var htmlList = "";
-		var loadList = ["<input type='checkbox' id='cb' class='toDoItem' checked><label for='cb'>be awesome!</label><br>",
-			"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>",
-			"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>",
-			"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>",
-			"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>",
-			"<input type='checkbox' id='cb' class='toDoItem'><label for='cb'>__________</label><br>"
+
+		var htmlList = "<ul>";
+
+		var loadList = ["<li class='item'><input type='checkbox' checked><label>be awesome!</label></li>",
+			"<li class='item'><input type='checkbox'><label>__________</label></li>",
+			"<li><input type='checkbox'><label>__________</label></li>",
+			"<li><input type='checkbox'><label>__________</label></li>",
+			"<li><input type='checkbox'><label>__________</label></li>",
+			"<li><input type='checkbox'><label>__________</label></li>"
 			];
 
 		for (var item in loadList) {
 			htmlList += loadList[item];
 		}
+
+		htmlList += "</ul>";
 
 		$("#list").html(htmlList);
 
