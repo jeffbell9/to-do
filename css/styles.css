@@ -23,7 +23,7 @@ body {
 	/*margin-right: 325px;*/
 	border-bottom: solid black 2px;
 	padding-bottom: 30px;
-	padding-left: 10%
+	padding-left: 15%
 }
 
 #toDoItem {
@@ -38,7 +38,7 @@ body {
 	text-align: left;
 	margin-top: 50px;
 	margin-right: 25%;
-	margin-left: 42%;
+	margin-left: 32%;
 	height: 200px;
 
 }
@@ -65,9 +65,13 @@ li:first-child {
 }
 
 li {
-	margin-top: 15px;
+	margin-top: 25px;
 }
 
 .underline {
 	text-decoration: underline;
+}
+
+.delete {
+	margin-left: 35px;
 }

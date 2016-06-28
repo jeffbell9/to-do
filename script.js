@@ -2,15 +2,15 @@ $(document).ready(function() {
 
 	// populate list at startup
 
-	var htmlList = "<ul>";
+	var htmlList = "";
 
 	if (JSON.parse(localStorage.getItem("list")) === null) {
-		var loadList = ["<li class='item'><input type='checkbox' checked><label>be awesome!</label></li>",
-					"<li class='item'><input type='checkbox'><label>__________</label></li>",
-					"<li><input type='checkbox'><label>__________</label></li>",
-					"<li><input type='checkbox'><label>__________</label></li>",
-					"<li><input type='checkbox'><label>__________</label></li>",
-					"<li><input type='checkbox'><label>__________</label></li></ul>"
+		var loadList = ["<li><input type='checkbox' checked><label>be awesome!</label></li>",
+					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
+					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
+					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
+					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
+					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>"
 					];
 		localStorage.setItem("list", JSON.stringify(loadList));
 	} else {
@@ -21,8 +21,6 @@ $(document).ready(function() {
 	for (var item in loadList) {
 		htmlList += loadList[item];
 	}
-
-	htmlList += "</ul>";
 
 	$("#list").html(htmlList);
 
@@ -61,21 +59,19 @@ $(document).ready(function() {
 
 	$("#remove").click(function() {
 
-		var htmlList = "<ul>";
+		var htmlList = "";
 
-		var loadList = ["<li class='item'><input type='checkbox' checked><label>be awesome!</label></li>",
-			"<li class='item'><input type='checkbox'><label>__________</label></li>",
-			"<li><input type='checkbox'><label>__________</label></li>",
-			"<li><input type='checkbox'><label>__________</label></li>",
-			"<li><input type='checkbox'><label>__________</label></li>",
-			"<li><input type='checkbox'><label>__________</label></li>"
+		var loadList = ["<li><input type='checkbox' checked><label>be awesome!</label></li>",
+			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
+			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
+			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
+			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
+			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>"
 			];
 
 		for (var item in loadList) {
 			htmlList += loadList[item];
 		}
-
-		htmlList += "</ul>";
 
 		$("#list").html(htmlList);
 
