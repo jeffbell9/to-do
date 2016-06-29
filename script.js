@@ -3,15 +3,10 @@ $(document).ready(function() {
 	// populate list at startup
 
 	var htmlList = "";
+	var loadList;
 
 	if (JSON.parse(localStorage.getItem("list")) === null) {
-		var loadList = ["<li><input type='checkbox' checked><label>be awesome!</label></li>",
-					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
-					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
-					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
-					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
-					"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>"
-					];
+		loadList = ["<li><input type='checkbox' checked><label>be awesome!</label></li>"];
 		localStorage.setItem("list", JSON.stringify(loadList));
 	} else {
 		loadList = JSON.parse(localStorage.getItem("list"));
@@ -24,59 +19,67 @@ $(document).ready(function() {
 
 	$("#list").html(htmlList);
 
-	// add item to list
 
-	$("#add").click(function() {
-		if ($("#toDoItem").val() !== "") {
-			$("label").each(function() {
-				var htmlList = "";
-				var loadList = JSON.parse(localStorage.getItem("list"));
-				var item = $("#toDoItem").val();
 
-				$("#toDoItem").val("");
+	var taskInput = $("#toDoItem");
+	var addButton = $("#add");
+	var list = $("#list");
+
+	var createNewItem = function(item) {
+		
+		var listItem = "<li><input type='checkbox'><label class='underline'>" + item + "</label><button class='delete'>delete</button></li>";
+			
+		loadList.push("<li><input type='checkbox'><label class='underline'>" + item + "</label><button class='delete'>delete</button></li>");
 				
-				if ($(this).text() !== '_______') {
-					var index = loadList.indexOf("<li><input type='checkbox'><label>__________</label></li>");
-					loadList[index] = "<li><input type='checkbox'><label for='cb' class='underline'>" + item + "</label></li>";
-					localStorage.setItem("list", JSON.stringify(loadList));
+		localStorage.setItem("list", JSON.stringify(loadList));
 
-					for (var item in loadList) {
-						htmlList += loadList[item];
-					}
+		return listItem;
 
-					$("#list").html(htmlList);
+	}
 
-					return false;
-				}
+	var bindTaskEvents = function(taskListItem) {
+
+			$(".delete").click(function() {
+				console.log("delete me");
+
+				var item = $(this).prev().html();
+				
+				var listItem = "<li><input type='checkbox'><label class='underline'>" + item + "</label><button class='delete'>delete</button></li>";
+				var index = loadList.indexOf(listItem);
+
+				
+				var gottaGo = this.parentNode;
+				var ul = gottaGo.parentNode
+				ul.removeChild(gottaGo);
+
+				loadList.splice(index,1);
+				localStorage.setItem("list", JSON.stringify(loadList));
+				
 			});
+	}
+
+	var addTask = function() {
+
+		if (taskInput.val() !== "") {
+			var listItem = createNewItem(taskInput.val());
+			list.append(listItem);
+			bindTaskEvents(listItem);
+
+			taskInput.val("");
+			
 		} else {
 			alert("Please enter something to do");
 		}
 		
+	}
+
+	addButton.click(function() {
+		addTask();
 	});
 
-	// remove items from list
 
-	$("#remove").click(function() {
-
-		var htmlList = "";
-
-		var loadList = ["<li><input type='checkbox' checked><label>be awesome!</label></li>",
-			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
-			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
-			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
-			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>",
-			"<li><input type='checkbox'><label>__________</label><button class='delete'>delete</button></li>"
-			];
-
-		for (var item in loadList) {
-			htmlList += loadList[item];
-		}
-
-		$("#list").html(htmlList);
-
-		localStorage.setItem("list", JSON.stringify(loadList));
-
-	});
+	for(var i = 0; i < list.length; i++) {
+  		bindTaskEvents(list.children[i]); 
+	}
 
 });
