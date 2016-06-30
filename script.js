@@ -1,37 +1,28 @@
 $(document).ready(function() {
 
-	// populate list at startup
-
-	var htmlList = "";
-	var loadList;
-
-	if (JSON.parse(localStorage.getItem("list")) === null) {
-		loadList = ["<li><input type='checkbox' checked><label>be awesome!</label></li>"];
-		localStorage.setItem("list", JSON.stringify(loadList));
-	} else {
-		loadList = JSON.parse(localStorage.getItem("list"));
-	}
-		
-
-	for (var item in loadList) {
-		htmlList += loadList[item];
-	}
-
-	$("#list").html(htmlList);
-
-
+	$("#list").html("<li><input type='checkbox' checked><label>be awesome!</label><button class='delete'>delete</button></li>");
 
 	var taskInput = $("#toDoItem");
-	var addButton = $("#add");
 	var list = $("#list");
 
 	var createNewItem = function(item) {
-		
-		var listItem = "<li><input type='checkbox'><label class='underline'>" + item + "</label><button class='delete'>delete</button></li>";
-			
-		loadList.push("<li><input type='checkbox'><label class='underline'>" + item + "</label><button class='delete'>delete</button></li>");
-				
-		localStorage.setItem("list", JSON.stringify(loadList));
+
+		var listItem = document.createElement("li");
+  
+		var checkbox = document.createElement("input"); //checkbox
+		var label = document.createElement("label");
+		var deleteButton = document.createElement("button");
+  
+  		checkbox.type = "checkbox";
+  
+  		deleteButton.innerText = "delete";
+  		deleteButton.className = "delete";
+  
+  		label.innerText = item;
+  
+		listItem.appendChild(checkbox);
+		listItem.appendChild(label);
+		listItem.appendChild(deleteButton);
 
 		return listItem;
 
@@ -39,23 +30,9 @@ $(document).ready(function() {
 
 	var bindTaskEvents = function(taskListItem) {
 
-			$(".delete").click(function() {
-				console.log("delete me");
+		var deleteButton = taskListItem.querySelector("button.delete");
 
-				var item = $(this).prev().html();
-				
-				var listItem = "<li><input type='checkbox'><label class='underline'>" + item + "</label><button class='delete'>delete</button></li>";
-				var index = loadList.indexOf(listItem);
-
-				
-				var gottaGo = this.parentNode;
-				var ul = gottaGo.parentNode
-				ul.removeChild(gottaGo);
-
-				loadList.splice(index,1);
-				localStorage.setItem("list", JSON.stringify(loadList));
-				
-			});
+		deleteButton.onclick = deleteTask;
 	}
 
 	var addTask = function() {
@@ -73,13 +50,21 @@ $(document).ready(function() {
 		
 	}
 
-	addButton.click(function() {
+	var deleteTask = function() {
+
+		var listItem = $(this).parent();
+		var gottaGo = this.parentNode;
+		var ul = gottaGo.parentNode;
+		ul.removeChild(gottaGo);
+	}
+
+	$("#add").click(function() {
 		addTask();
 	});
 
 
-	for(var i = 0; i < list.length; i++) {
-  		bindTaskEvents(list.children[i]); 
-	}
+	$("li").each(function() {
+		bindTaskEvents(this);
+	})
 
 });
