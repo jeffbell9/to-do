@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	//show be awesome! item on startup
+
 	$("#list").html("<li><input type='checkbox' checked><label>be awesome!</label><button class='delete'>delete</button></li>");
 
 	var taskInput = $("#toDoItem");
@@ -52,7 +54,6 @@ $(document).ready(function() {
 
 	var deleteTask = function() {
 
-		var listItem = $(this).parent();
 		var gottaGo = this.parentNode;
 		var ul = gottaGo.parentNode;
 		ul.removeChild(gottaGo);
@@ -62,6 +63,7 @@ $(document).ready(function() {
 		addTask();
 	});
 
+	//cycle over any existing items and bind tasks
 
 	$("li").each(function() {
 		bindTaskEvents(this);

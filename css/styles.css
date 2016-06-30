@@ -19,8 +19,6 @@ body {
 
 #enter {
 	text-align: center;
-	/*margin-left: 430px;*/
-	/*margin-right: 325px;*/
 	border-bottom: solid black 2px;
 	padding-bottom: 30px;
 	padding-left: 12%
@@ -41,15 +39,9 @@ body {
 #list {
 	text-align: left;
 	margin-top: 50px;
-	/*margin-right: 25%;*/
 	margin-left: 42%;
 	height: 200px;
 
-}
-
-#remove {
-	text-align: center;
-	margin-top: 100px;
 }
 
 input[type=checkbox]:checked + label {
