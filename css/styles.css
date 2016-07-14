@@ -4,10 +4,10 @@ body {
 	background-color: yellow;
 }
 
-#container {
-	margin: 0 auto;
-	text-align: center;
-}
+/*#container {*/
+	/*margin: 0 auto;*/
+	/*text-align: center;*/
+/*}*/
 
 #title {
 	margin-top: 75px;
@@ -18,34 +18,37 @@ body {
 /* Enter item */
 
 #enter {
-	text-align: center;
 	border-bottom: solid black 2px;
 	padding-bottom: 30px;
-	padding-left: 12%
+	/*padding-left: 12%*/
 }
 
 #add {
-	margin-left: 25px;
+	margin-left: 5px;
 }
 
 #toDoItem {
-	height: 20px;
-	width: 150px;
-	margin-right: 10px;
+	height: 30px;
+	width: 186px;
+	/*margin-right: 10px;*/
 }
 
 /* List */
 
 #list {
-	text-align: left;
+	/*text-align: left;*/
 	margin-top: 50px;
-	margin-left: 42%;
+	/*margin-left: 42%;*/
 	height: 200px;
 
 }
 
 input[type=checkbox]:checked + label {
 	text-decoration: line-through;
+}
+
+input[type=checkbox] {
+	margin-right: 10px;
 }
 
 .toDoItem {
@@ -62,6 +65,8 @@ li:first-child {
 
 li {
 	margin-top: 25px;
+	margin-left: 25px;
+	/*float: left;*/
 }
 
 .underline {
@@ -69,6 +74,7 @@ li {
 }
 
 .delete {
-	float: right;
-	margin-right: 350px;
+	/*float: right;*/
+	margin-left: 30px;
+
 }

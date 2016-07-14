@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<html lang="en">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>To Do</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="https://code.jquery.com/jquery-2.2.3.js"></script>
 	<script src="script.js"></script>
 </head>
 <body>
-	<div id="container">
-		<h2 id="title">to do list</h2>
-		<div id="enter">
-			<input type="text" id="toDoItem" name="toDoItem" placeholder="Enter something to be done">
-			<button type="button" id="add">add to list</button>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 id="title" class="text-center">to do list</h2>
+			</div>
 		</div>
-		<ul id="list"></ul>
+		<div class="row">
+			<div id="enter" class="col-md-12 text-center">
+				<input type="text" id="toDoItem" name="toDoItem" placeholder="Enter something to be done">
+				<button type="button" id="add">add to list</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4 col-sm-5 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+				<ul id="list" class="text-left"></ul>
+			</div>
+		</div>
 	</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
+integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
+crossorigin="anonymous"></script>
 </body>
 </html>
